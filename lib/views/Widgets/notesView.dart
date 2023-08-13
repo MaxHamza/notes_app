@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-
-import 'Widgets/Costum_Body_Bar.dart';
+import 'CustomBody.dart';
 
 class NotesView extends StatelessWidget {
   const NotesView({Key? key}) : super(key: key);

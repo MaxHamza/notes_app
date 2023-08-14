@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'CustomBody.dart';
+import 'package:untitled4/views/Widgets/CustomBottomSheet.dart';
+import 'Costum_body.dart';
+
 
 class NotesView extends StatelessWidget {
   const NotesView({Key? key}) : super(key: key);
@@ -7,7 +9,13 @@ class NotesView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      floatingActionButton: FloatingActionButton(onPressed:(){},child:const Icon(Icons.add)),
+      floatingActionButton: FloatingActionButton(onPressed:(){
+        showModalBottomSheet(context: context, 
+           backgroundColor: Colors.transparent,
+            builder:(context){
+          return const CustomBottomSheet();
+        });
+      },child:const Icon(Icons.add)),
    body:const CustomBody()
      );
   }

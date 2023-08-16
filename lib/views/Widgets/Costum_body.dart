@@ -18,7 +18,7 @@ class CustomBody extends StatelessWidget {
                fontSize: 28,
              ),),
               Spacer(),
-              SearchIcon(),
+              CustomIcon(icon: Icons.search_rounded,),
             ],
           ),
          const SizedBox(height: 10,),

@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:untitled4/constants/color.dart';
+import 'package:untitled4/views/Widgets/Costum_body.dart';
+import 'package:untitled4/views/Widgets/edit_notes.dart';
 import 'package:untitled4/views/Widgets/notesView.dart';
 
 
@@ -14,6 +17,7 @@ class myApp extends StatelessWidget {
     return  MaterialApp(
       debugShowCheckedModeBanner: false,
       theme:ThemeData(
+        primaryColor: kPrimaryColor,
         fontFamily:'Poppins',
         brightness: Brightness.dark
       ),

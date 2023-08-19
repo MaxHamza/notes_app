@@ -3,7 +3,7 @@ part 'note_view_model.g.dart';
 
 @HiveType(typeId: 0)
 
-class NoteView extends HiveObject{
+class NoteModel extends HiveObject{
   @HiveField(0)
   final String title;
   @HiveField(1)
@@ -12,5 +12,5 @@ class NoteView extends HiveObject{
   final String date;
   @HiveField(3)
   final int color;
- NoteView({required this.title,required this.subtitle,required this.date,required this.color});
+ NoteModel({required this.title,required this.subtitle,required this.date,required this.color});
 }

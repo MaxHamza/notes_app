@@ -24,7 +24,7 @@ class EditNotes extends StatelessWidget {
                ),
                const SizedBox(height: 24,),
                CustomTextField(hintText: 'title',),
-               SizedBox(height: 10,),
+             const  SizedBox(height: 10,),
                CustomTextField(hintText: 'content',maxLines: 5,),
 
 

@@ -28,4 +28,5 @@ class myApp extends StatelessWidget {
       home:const NotesView(),
     );
   }
+
 }

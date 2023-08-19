@@ -13,7 +13,7 @@ class CustomListView extends StatelessWidget {
           Navigator.push(context, MaterialPageRoute(builder: (context){
             return const EditNotes();
           }));
-        } , child: CustomCard()),
+        } , child:const CustomCard()),
       ),
         itemCount:10,
         physics:const BouncingScrollPhysics().parent,

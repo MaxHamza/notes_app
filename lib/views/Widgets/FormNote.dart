@@ -30,18 +30,24 @@ class _FormWidgetState extends State<FormWidget> {
           CustomTextField(hintText: 'content',maxLines: 5,onSaved:(value){
             subtitle=value;
           },),
-          const  SizedBox(height: 16,),
-          CustomButton(onTap:(){
-            if(formKey.currentState!.validate()){
-              formKey.currentState!.save();
-              NoteModel note=NoteModel(title: title!, subtitle: subtitle!, date:DateTime.now().toString(), color:Colors.black.value);
-              BlocProvider.of<AddNoteCubit>(context).addNote(note);
-            }
-            else{
-              autoValidateMode=AutovalidateMode.always;
-              setState(() {});
-            }
-          })
+          const SizedBox(height: 16,),
+          BlocBuilder<AddNoteCubit, AddNoteState>(
+  builder: (context, state) {
+    return CustomButton(
+              isLoading:state is AddNoteLoading?true:false,
+              onTap:(){
+                    if(formKey.currentState!.validate()){
+                      formKey.currentState!.save();
+                      NoteModel note=NoteModel(title: title!, subtitle: subtitle!, date:DateTime.now().toString(), color:Colors.black.value);
+                      BlocProvider.of<AddNoteCubit>(context).addNote(note);
+                    }
+                    else{
+                      autoValidateMode=AutovalidateMode.always;
+                      setState(() {});
+                    }
+                  });
+  },
+)
         ],
       ),
     );

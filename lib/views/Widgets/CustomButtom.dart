@@ -1,12 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:untitled4/constants/color.dart';
+
+import '../../cubit/add_note_cubit.dart';
 class CustomButton extends StatelessWidget {
-  const CustomButton({Key? key, this.onTap}) : super(key: key);
+  const CustomButton({Key? key, this.onTap, required this.isLoading}) : super(key: key);
   final void Function()?onTap;
+  final bool isLoading;
   @override
   Widget build(BuildContext context) {
 
-    return GestureDetector(
+    return BlocProvider(
+  create: (context) => AddNoteCubit(),
+  child: GestureDetector(
       onTap:onTap,
       child: Container(
         width: MediaQuery.of(context).size.width,
@@ -15,8 +21,14 @@ class CustomButton extends StatelessWidget {
           color: kPrimaryColor,
           borderRadius:const BorderRadius.all(Radius.circular(8))
         ),
-        child:const Center(
-          child: Text('Add',
+        child: Center(
+          child:isLoading?const SizedBox(
+             height: 24,
+            width: 24,
+            child:  CircularProgressIndicator(
+                color: Colors.black),
+          ):
+          const Text('Add',
             style: TextStyle(
                 fontSize: 20,
                 color: Colors.black
@@ -24,6 +36,7 @@ class CustomButton extends StatelessWidget {
           ),
         ),
       ),
-    );
+    ),
+);
   }
 }

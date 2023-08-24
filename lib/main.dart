@@ -12,9 +12,8 @@ import 'cubit/add_note_cubit.dart';
 
 void main()async {
   await Hive.initFlutter();
-
-  await Hive.openBox(kNotesBox);
   Hive.registerAdapter(NoteViewAdapter());
+  await Hive.openBox(kNotesBox);
   Bloc.observer=SimpleBlocObserver();
   runApp(const myApp(
   ));
@@ -24,19 +23,14 @@ class myApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  MultiBlocProvider(
-      providers: [
-        BlocProvider(create: (context)=>AddNoteCubit()),
-      ],
-      child: MaterialApp(
-        debugShowCheckedModeBanner: false,
-        theme:ThemeData(
-          primaryColor: kPrimaryColor,
-          fontFamily:'Poppins',
-          brightness: Brightness.dark
-        ),
-        home:const NotesView(),
+    return  MaterialApp(
+      debugShowCheckedModeBanner: false,
+      theme:ThemeData(
+        primaryColor: kPrimaryColor,
+        fontFamily:'Poppins',
+        brightness: Brightness.dark
       ),
+      home:const NotesView(),
     );
   }
 

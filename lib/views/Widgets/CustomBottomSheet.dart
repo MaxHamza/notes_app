@@ -24,16 +24,19 @@ class CustomBottomSheet extends StatelessWidget {
               print('Failed: ${state.errMessage}');
             }
             if (state is AddNoteSuccess) {
-              Navigator.of(context);
+              Navigator.pop(context);
             }
           },
           builder: (context, state) {
             return  AbsorbPointer(
               absorbing: state is AddNoteLoading?true:false,
-              child:const Padding(
-                padding: EdgeInsets.symmetric(vertical: 28, horizontal: 28),
-                child: SingleChildScrollView(
-                    child: FormWidget()
+              child: Padding(
+                padding: EdgeInsets.only(top: 28, left: 28,right: 28,bottom:MediaQuery.of(context).viewInsets.bottom),
+                child:const SingleChildScrollView(
+                    child: Padding(
+                      padding: EdgeInsets.only(bottom: 10.0),
+                      child: FormWidget(),
+                    )
                 ),
               ),
             );

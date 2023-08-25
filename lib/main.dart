@@ -13,7 +13,7 @@ import 'cubit/add_note_cubit.dart';
 void main()async {
   await Hive.initFlutter();
   Hive.registerAdapter(NoteViewAdapter());
-  await Hive.openBox(kNotesBox);
+  await Hive.openBox<NoteModel>(kNotesBox);
   Bloc.observer=SimpleBlocObserver();
   runApp(const myApp(
   ));

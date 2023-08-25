@@ -1,11 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:untitled4/cubit/notes_cubit.dart';
 import 'package:untitled4/views/Widgets/Costum_Card.dart';
 import 'package:untitled4/views/Widgets/Costum_Search_Icon.dart';
 
 import 'custom_notes_app.dart';
-class CustomBody extends StatelessWidget {
+class CustomBody extends StatefulWidget {
   const CustomBody({Key? key}) : super(key: key);
 
+  @override
+  State<CustomBody> createState() => _CustomBodyState();
+}
+
+class _CustomBodyState extends State<CustomBody> {
+  @override
+  void initState(){
+    BlocProvider.of<NotesCubit>(context).fetchNote();
+    super.initState();}
   @override
   Widget build(BuildContext context) {
     return  Padding(

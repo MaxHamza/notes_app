@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:untitled4/constants/color.dart';
-
 import '../../models/note_view_model.dart';
 class CustomCard extends StatelessWidget {
-  const CustomCard({Key? key, required this.note}) : super(key: key);
+   CustomCard({Key? key, required this.note}) : super(key: key);
   final NoteModel note;
   @override
   Widget build(BuildContext context) {
+
     return Container(
       decoration: BoxDecoration(
       color:kPrimaryColor,
@@ -30,7 +31,9 @@ class CustomCard extends StatelessWidget {
                   color: Colors.black54,
                 ),),
               ),
-              trailing: IconButton(onPressed: (){}, icon:const Icon(Icons.delete_rounded,color: Colors.black,)),
+              trailing: IconButton(onPressed: ()async{
+               await note.delete();//i can do that because i extends HiveObject;
+              }, icon:const Icon(Icons.delete_rounded,color: Colors.black,)),
             ),
             Padding(
               padding: const EdgeInsets.only(right: 24.0),
@@ -41,6 +44,6 @@ class CustomCard extends StatelessWidget {
           ],
         ),
       ),
-    );
+);
   }
 }

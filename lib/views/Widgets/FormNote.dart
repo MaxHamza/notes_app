@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:intl/date_symbol_data_file.dart';
+import 'package:intl/intl.dart';
 import 'package:untitled4/models/note_view_model.dart';
 import 'CustomButtom.dart';
 import 'customTextField.dart';
@@ -12,6 +14,10 @@ class FormWidget extends StatefulWidget {
 }
 
 class _FormWidgetState extends State<FormWidget> {
+  void initState() {
+    super.initState();
+    initializeDateFormatting;
+  }
   GlobalKey<FormState>formKey=GlobalKey();
   String ?title ;
  String ?subtitle;
@@ -38,7 +44,8 @@ class _FormWidgetState extends State<FormWidget> {
               onTap:(){
                     if(formKey.currentState!.validate()){
                       formKey.currentState!.save();
-                      NoteModel note=NoteModel(title: title!, subtitle: subtitle!, date:DateTime.now().toString(), color:Colors.black.value);
+                      NoteModel note=NoteModel(title: title!, subtitle: subtitle!,
+                          date:DateFormat('dd-MM-yyyy').format(DateTime.now()), color:Colors.black.value);
                       BlocProvider.of<AddNoteCubit>(context).addNote(note);
 
                     }

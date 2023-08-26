@@ -13,14 +13,21 @@ class NotesView extends StatelessWidget {
     return BlocProvider(
       create: (context) => NotesCubit(),
       child: Scaffold(
-          floatingActionButton: FloatingActionButton(onPressed: () {
-            showModalBottomSheet(context: context,
-                isScrollControlled: true,
-                backgroundColor: Colors.transparent,
-                builder: (context) {
-                  return const CustomBottomSheet();
-                });
-          }, child: const Icon(Icons.add)),
+          floatingActionButton: Container(
+            width:47 ,
+            height: 47,
+            child: FittedBox(
+              child: FloatingActionButton(
+                  onPressed: () {
+                showModalBottomSheet(context: context,
+                    isScrollControlled: true,
+                    backgroundColor: Colors.transparent,
+                    builder: (context) {
+                      return const CustomBottomSheet();
+                    });
+              }, child: const Icon(Icons.add)),
+            ),
+          ),
           body: const CustomBody()
       ),
     );

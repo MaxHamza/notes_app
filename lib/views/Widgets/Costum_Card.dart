@@ -1,29 +1,31 @@
 import 'package:flutter/material.dart';
-class CustomCard extends StatelessWidget {
-  const CustomCard({Key? key}) : super(key: key);
+import 'package:untitled4/constants/color.dart';
 
+import '../../models/note_view_model.dart';
+class CustomCard extends StatelessWidget {
+  const CustomCard({Key? key, required this.note}) : super(key: key);
+  final NoteModel note;
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration:const BoxDecoration(
-      color:Color(0xffFFCA7B),
-        borderRadius: BorderRadius.all(Radius.circular(16))
+      decoration: BoxDecoration(
+      color:kPrimaryColor,
+        borderRadius:const BorderRadius.all(Radius.circular(16))
       ),
       child: Padding(
-        padding: const EdgeInsets.only(top:24,bottom: 24,left: 16),
+        padding: const EdgeInsets.only(top:24,bottom: 22,left: 16),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.end,
           children:[
             ListTile(
-              title:const Text('Flutter tips',style: TextStyle(
+              title:Text(note.title,style:const TextStyle(
                 fontSize: 24,
                 color: Colors.black,
                 fontWeight: FontWeight.bold
               ),),
-              subtitle:const Padding(
-                padding:  EdgeInsets.symmetric(vertical:10.0),
-                child:  Text('''Build your career with 
-hamza max''',style: TextStyle(
+              subtitle: Padding(
+                padding:const  EdgeInsets.symmetric(vertical:10.0),
+                child:  Text(note.subtitle,style:const TextStyle(
                   fontSize: 16,
                   color: Colors.black54,
                 ),),
@@ -32,7 +34,7 @@ hamza max''',style: TextStyle(
             ),
             Padding(
               padding: const EdgeInsets.only(right: 24.0),
-              child: Text('August,13/2023',style: TextStyle(color: Colors.black.withOpacity(.54),fontSize: 12),
+              child: Text(note.date,style: TextStyle(color: Colors.black.withOpacity(.54),fontSize: 12),
               ),
             ),
             const SizedBox(height: 10,),

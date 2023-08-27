@@ -11,6 +11,7 @@ class NotesCubit extends Cubit<NotesState> {
   List<NoteModel>?note;
    fetchNote() {
       note = Hive.box<NoteModel>(kNotesBox).values.toList();
+      emit(NotesSuccessState());
    }
   }
 

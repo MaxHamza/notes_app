@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 import 'package:untitled4/cubit/add_note_cubit.dart';
+import 'package:untitled4/cubit/notes_cubit.dart';
 import 'package:untitled4/views/Widgets/CustomButtom.dart';
 import 'package:untitled4/views/Widgets/customTextField.dart';
 import 'FormNote.dart';
@@ -24,6 +25,7 @@ class CustomBottomSheet extends StatelessWidget {
               print('Failed: ${state.errMessage}');
             }
             if (state is AddNoteSuccess) {
+              BlocProvider.of<NotesCubit>(context).fetchNote();
               Navigator.pop(context);
             }
           },

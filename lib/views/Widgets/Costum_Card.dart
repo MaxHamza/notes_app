@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:untitled4/constants/color.dart';
+import 'package:untitled4/cubit/notes_cubit.dart';
 import '../../models/note_view_model.dart';
 class CustomCard extends StatelessWidget {
    CustomCard({Key? key, required this.note}) : super(key: key);
@@ -31,8 +32,9 @@ class CustomCard extends StatelessWidget {
                   color: Colors.black54,
                 ),),
               ),
-              trailing: IconButton(onPressed: ()async{
-               await note.delete();//i can do that because i extends HiveObject;
+              trailing: IconButton(onPressed: (){
+                note.delete();//i can do that because i extends HiveObject;
+                BlocProvider.of<NotesCubit>(context).fetchNote();
               }, icon:const Icon(Icons.delete_rounded,color: Colors.black,)),
             ),
             Padding(

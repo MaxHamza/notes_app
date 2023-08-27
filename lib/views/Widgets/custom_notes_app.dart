@@ -7,7 +7,7 @@ import 'package:untitled4/views/Widgets/edit_notes.dart';
 import 'Costum_Card.dart';
 
 class CustomListView extends StatelessWidget {
-  const CustomListView({Key? key}) : super(key: key);
+  const CustomListView({Key? key,}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +22,7 @@ class CustomListView extends StatelessWidget {
                     child: GestureDetector(onTap: () {
                       Navigator.push(
                           context, MaterialPageRoute(builder: (context) {
-                        return const EditNotes();
+                        return  EditNotes(note:note[i],);
                       }));
                     }, child: CustomCard(note:note[i])),
                   ),

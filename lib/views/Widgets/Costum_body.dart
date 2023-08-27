@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:untitled4/cubit/notes_cubit.dart';
+import 'package:untitled4/models/note_view_model.dart';
 import 'package:untitled4/views/Widgets/Costum_Card.dart';
 import 'package:untitled4/views/Widgets/Costum_Search_Icon.dart';
 
@@ -14,6 +15,7 @@ class CustomBody extends StatefulWidget {
 
 class _CustomBodyState extends State<CustomBody> {
   @override
+
   void initState(){
     BlocProvider.of<NotesCubit>(context).fetchNote();
     super.initState();}

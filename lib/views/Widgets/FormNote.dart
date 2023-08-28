@@ -4,6 +4,7 @@ import 'package:intl/date_symbol_data_file.dart';
 import 'package:intl/intl.dart';
 import 'package:untitled4/models/note_view_model.dart';
 import 'CustomButtom.dart';
+import 'color_note_list.dart';
 import 'customTextField.dart';
 import 'package:untitled4/cubit/add_note_cubit.dart';
 class FormWidget extends StatefulWidget {
@@ -36,7 +37,9 @@ class _FormWidgetState extends State<FormWidget> {
           CustomTextField(hintText: 'content',maxLines: 5,onSaved:(value){
             subtitle=value;
           },),
-          const SizedBox(height: 16,),
+          const SizedBox(height: 32,),
+         const ColorListItem(),
+          const SizedBox(height: 32,),
           BlocBuilder<AddNoteCubit, AddNoteState>(
         builder: (context, state) {
           return CustomButton(
@@ -45,7 +48,8 @@ class _FormWidgetState extends State<FormWidget> {
                     if(formKey.currentState!.validate()){
                       formKey.currentState!.save();
                       NoteModel note=NoteModel(title: title!, subtitle: subtitle!,
-                          date:DateFormat('dd-MM-yyyy').format(DateTime.now()), color:Colors.black.value);
+                          date:DateFormat('dd-MM-yyyy').format(DateTime.now()),
+                          color:Colors.white.value);
                       BlocProvider.of<AddNoteCubit>(context).addNote(note);
 
                     }

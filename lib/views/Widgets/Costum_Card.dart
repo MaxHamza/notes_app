@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:untitled4/constants/color.dart';
+import 'package:untitled4/cubit/add_note_cubit.dart';
 import 'package:untitled4/cubit/notes_cubit.dart';
 import '../../models/note_view_model.dart';
 class CustomCard extends StatelessWidget {
@@ -11,7 +12,7 @@ class CustomCard extends StatelessWidget {
 
     return Container(
       decoration: BoxDecoration(
-      color:kPrimaryColor,
+      color:Color(note.color),
         borderRadius:const BorderRadius.all(Radius.circular(16))
       ),
       child: Padding(

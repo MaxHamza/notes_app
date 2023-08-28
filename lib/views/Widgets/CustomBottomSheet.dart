@@ -12,8 +12,8 @@ class CustomBottomSheet extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => AddNoteCubit(),
+    return
+      BlocProvider(create: (context)=>AddNoteCubit(),
       child: Container(
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(16),

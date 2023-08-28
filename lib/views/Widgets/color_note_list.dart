@@ -51,7 +51,7 @@ class _ColorListItemState extends State<ColorListItem> {
                   color: color[index],),),
             );
           },
-            itemCount: 5,
+            itemCount: kListColors.length,
             scrollDirection: Axis.horizontal,
           ),
         );

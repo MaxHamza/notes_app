@@ -2,10 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:untitled4/cubit/notes_cubit.dart';
 import 'package:untitled4/models/note_view_model.dart';
-import '../../constants/color.dart';
-import 'Costum_Search_Icon.dart';
-import 'color_note_list.dart';
 import 'customTextField.dart';
+import 'edit_color_list.dart';
 
 class EditNotes extends StatefulWidget {
   const EditNotes({Key? key, required this.note}) : super(key: key);
@@ -70,45 +68,6 @@ class _EditNotesState extends State<EditNotes> {
            )
        ),
      ),
-    );
-  }
-}
-
-class EditColorListItem extends StatefulWidget {
-    EditColorListItem({Key? key, required this.note}) : super(key: key);
-  final NoteModel note;
-  @override
-  State<EditColorListItem> createState() => _ColorListItemState();
-}
-
-class _ColorListItemState extends State<EditColorListItem> {
- late int currentColor;
-  void initState(){
-    currentColor=kListColors.indexOf(widget.note.color);
-    super.initState();
-  }
-  List<int>color=kListColors;
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      height: 76,
-      child: ListView.builder(itemBuilder: (context, index) {
-        return Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 6.0),
-          child: GestureDetector(
-            onTap: () {
-              currentColor = index;
-              widget.note.color=kListColors[index];
-              widget.note.save();
-              setState(() {});
-            },
-            child: ColorItem(isActive: currentColor == index ? true : false,
-              color: color[index],),),
-        );
-      },
-        itemCount:kListColors.length,
-        scrollDirection: Axis.horizontal,
-      ),
     );
   }
 }
